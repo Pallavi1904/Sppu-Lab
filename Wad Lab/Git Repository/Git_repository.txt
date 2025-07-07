@@ -1,0 +1,28 @@
+git --version
+git config --global user.name "Pallavi1904"
+git config --global user.email "pallaviakolkar55@gmail.com"
+
+# Go to your project folder
+cd path/to/your-project
+
+# Initialize Git
+git init
+
+# Add files to staging
+git add .
+
+# Commit the files
+git commit -m "Initial commit"
+
+# Link to your GitHub repo (replace with your actual URL)
+git remote add origin https://github.com/Pallavi1904/node-static-site.git
+
+# Push code to GitHub
+git push -u origin master
+
+
+
+
+
+username: Pallavi1904
+pass: Priya@1234@@
