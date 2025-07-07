@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registered Users</title>
+</head>
+<body>
+
+  <h1>Registered Users</h1>
+  <table border="1" cellpadding="10">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+      </tr>
+    </thead>
+    <tbody id="userTableBody">
+      <!-- Users will be loaded here -->
+    </tbody>
+  </table>
+
+  <br>
+  <a href="register.html">Back to Registration</a>
+
+  <script>
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+
+    const tableBody = document.getElementById('userTableBody');
+
+    users.forEach(user => {
+      const row = `<tr>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.password}</td>
+                  </tr>`;
+      tableBody.innerHTML += row;
+    });
+  </script>
+
+</body>
+</html>

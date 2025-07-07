@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Registration</title>
+</head>
+<body>
+
+  <h1>Register</h1>
+  <form id="registrationForm">
+    <input type="text" id="name" placeholder="Enter Name" required><br><br>
+    <input type="email" id="email" placeholder="Enter Email" required><br><br>
+    <input type="password" id="password" placeholder="Enter Password" required><br><br>
+    <button type="submit">Register</button>
+  </form>
+
+  <br>
+  <a href="users.html">View Registered Users</a>
+
+  <script>
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Get input values
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const newUser = { name, email, password };
+
+      // Push to array
+      users.push(newUser);
+
+      // Save to LocalStorage
+      localStorage.setItem('users', JSON.stringify(users));
+
+      // Simulate AJAX POST request
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://example.com/api/register', true); // dummy URL
+      xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+      xhr.onload = function() {
+        if (xhr.status === 200 || xhr.status === 201) {
+          alert('Registration successful!');
+          document.getElementById('registrationForm').reset();
+        }
+      };
+      xhr.send(JSON.stringify(newUser));
+
+      // OPTIONAL: Redirect to users page after registration
+      // window.location.href = 'users.html';
+    });
+  </script>
+
+</body>
+</html>
